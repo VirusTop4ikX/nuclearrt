@@ -25,3 +25,12 @@ jobs:
       run: make check
     - name: make distcheck
       run: make distcheck
+    - name: Upload artifacts
+      if: success()
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-artifacts
+        path: |
+          *.tar.gz
+          *.zip
+        retention-days: 30
